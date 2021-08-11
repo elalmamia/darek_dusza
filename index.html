@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="splide-core.css">
     <title>Site</title>
   </head>
   <body>
@@ -79,12 +80,22 @@
               </li>
             </ul>
           </div>
-
-          <img
-            class="pic1"
-            src="images/draft mobile2.png"
-            alt="food on a plate"
-          />
+        <div class="slider_wrapper">
+          <div class="splide">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide"><img class="gallery_pic" src="images/1.jpg" alt="food on a plate"/></li>
+                <li class="splide__slide"><img class="gallery_pic" src="images/3.jpg" alt="food on a plate"/></li>
+                <li class="splide__slide"><img class="gallery_pic" src="images/b.jpg" alt="food on a plate"/></li>
+                <li class="splide__slide"><img class="gallery_pic" src="images/7.jpg" alt="food on a plate"/></li>
+                <li class="splide__slide"><img class="gallery_pic" src="images/3.jpg" alt="food on a plate"/></li>
+                <li class="splide__slide"><img class="gallery_pic" src="images/b.jpg" alt="food on a plate"/></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+          
           <div class="text text2">
             <h1><span>Private</span> chef for your dinner <span>party</span></h1>
             <p>
@@ -97,30 +108,29 @@
           <div class="btn btn-contact"><a href="#">contact us</a></div>
         </div>
         <div class='menu_pics_back'>
-
-        <div class="text text3">
-          <h1>Our Menus</h1>
-          <p>
-            Create your own perfect combination. Choose one plate of each
-            course, choose how many courses you want your dinner to have bla bla
-            bla Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Sapiente beatae ipsa minus tempore vero fugiat culpa perspiciatis
-            eos.
-          </p>
-        </div>
+          <div class="text text3">
+            <h1>Our Menus</h1>
+            <p>
+              Create your own perfect combination. Choose one plate of each
+              course, choose how many courses you want your dinner to have bla bla
+              bla Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Sapiente beatae ipsa minus tempore vero fugiat culpa perspiciatis
+              eos.
+            </p>
+          </div>
         
-        <div class="menu_pics">
-          <a href="four_course_menu.html"
-            ><div class="menu_pic menu_four">
-                <div class="tag"><span class = 'big_num'>4</span><span class='tag_desc'> course </br>menu</span></div>
-            </div></a
-          >
-          <a href="#">
-            <div class="menu_pic menu_five"><div class="tag"><span class = 'big_num'>5</span><span class='tag_desc'> course </br>menu</span></div></div>
-          </a>
-          <a href="#"><div class="menu_pic menu_six"><div class="tag"><span class = 'big_num'>6</span><span class='tag_desc'>course </br>menu</span></div></div>
-        </div></a>
-        <img class="pic2" src="images/food2.jpg" alt="food on a plate" />
+          <div class="menu_pics">
+            <a href="four_course_menu.html"
+              ><div class="menu_pic menu_four">
+                  <div class="tag"><span class = 'big_num'>4</span><span class='tag_desc'> course </br>menu</span></div>
+              </div></a
+            >
+            <a href="#">
+              <div class="menu_pic menu_five"><div class="tag"><span class = 'big_num'>5</span><span class='tag_desc'> course </br>menu</span></div></div>
+            </a>
+            <a href="#"><div class="menu_pic menu_six"><div class="tag"><span class = 'big_num'>6</span><span class='tag_desc'>course </br>menu</span></div></div>
+          </div></a>
+        
         </div>
         <div class="meet_chef">
             <div class="text text4">
@@ -139,9 +149,10 @@
           <div class="text text5">
             <h1>Contact details</h1>
         <p>
-            Email adress: darek.dusza@gmail.com<br>
-       
-          Telephone number: +34 666 139 043
+            Email adress: darek.dusza@gmail.com
+        </p>
+        <p>
+          Telepho: darek.dusza@gmail.com
       </p>
 
         </div>
@@ -157,6 +168,7 @@
         <div class="copyrights">Darek Dusza &copy 2021 All rights reserved</div>
       </div>
     </footer>
+    <script src="splide-2.4.21/dist/js/splide.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

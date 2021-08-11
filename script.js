@@ -9,7 +9,12 @@ const burgerOpen = document.querySelector('.burger-icon'),
   header = document.querySelector('header'),
   navBackground = document.querySelector('.nav-list-dektop-wrapper::before'),
   ourMenus = document.querySelector('.text3'),
-  menusLink = document.querySelectorAll('.menus');
+  menusLink = document.querySelectorAll('.menus'),
+  galleryPic = document.querySelectorAll('.gallery_pic'),
+  sliderBtnLeft = document.querySelector('.btn_slider_left');
+
+// sliderBtnLeft.addEventListener('click', slidesToLeft);
+
 const sectionOneOptions = {
   rootMargin: '-600px 0px 0px 0px',
 };
@@ -57,3 +62,11 @@ function toggleMenu(e) {
     ourMenus.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
+
+new Splide('.splide', {
+  type: 'loop',
+  perPage: 3,
+  focus: 'center',
+  autoWidth: true,
+  arrowPath: '',
+}).mount();
