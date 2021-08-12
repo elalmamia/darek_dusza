@@ -8,8 +8,12 @@ const burgerOpen = document.querySelector('.burger-icon'),
   navSticky = document.querySelector('.nav-list-dektop-wrapper'),
   header = document.querySelector('header'),
   navBackground = document.querySelector('.nav-list-dektop-wrapper::before'),
-  ourMenus = document.querySelector('.text3'),
+  ourMenusSection = document.querySelector('.text3'),
+  aboutMeSection = document.querySelector('.meet_chef'),
+  contactSection = document.querySelector('.contact_wrapper'),
   menusLink = document.querySelectorAll('.menus'),
+  aboutLink = document.querySelectorAll('.about'),
+  contactLink = document.querySelectorAll('.contact'),
   galleryPic = document.querySelectorAll('.gallery_pic'),
   sliderBtnLeft = document.querySelector('.btn_slider_left');
 
@@ -46,6 +50,8 @@ sectionOneObserver.observe(header);
 burger.addEventListener('click', toggleMobileMenu);
 menuBtn.forEach(item => item.addEventListener('click', toggleMenu));
 menusLink.forEach(item => item.addEventListener('click', goToMenus));
+aboutLink.forEach(item => item.addEventListener('click', goToAbout));
+contactLink.forEach(item => item.addEventListener('click', goToContact));
 // menuBtn.addEventListener('click', toggleMenu);
 function toggleMobileMenu() {
   burgerClose.classList.toggle('show');
@@ -53,13 +59,19 @@ function toggleMobileMenu() {
   navList.classList.toggle('show');
 }
 function goToMenus() {
-  ourMenus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  ourMenusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function goToAbout() {
+  aboutMeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function goToContact() {
+  contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 function toggleMenu(e) {
   if (window.matchMedia('(max-width: 800px)').matches) {
     e.target.parentElement.nextElementSibling.classList.toggle('show');
   } else {
-    ourMenus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    ourMenusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
