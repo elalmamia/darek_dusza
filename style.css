@@ -785,6 +785,7 @@ details[open] summary ~ * {
     padding-bottom: 4rem;
   }
   .big_num {
+    font-size: 10rem;
     left: 20%;
     top: 40%;
     transform: translateY(-50%);
