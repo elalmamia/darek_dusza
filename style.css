@@ -544,12 +544,12 @@ details[open] summary ~ * {
   color: var(--white);
 }
 .menu_pic:hover .tag_desc {
-  color: var(--gold-light);
+  color: var(--white);
 }
 
 .menu_pic:hover .menu_pic_bg {
   /* rgba(134, 108, 2, 0.192) */
-  background-color: var(--gold);
+  background-color: var(--black);
 }
 .menu_pic::before,
 .menu_pic::after {
@@ -565,21 +565,21 @@ details[open] summary ~ * {
   border: 1px solid var;
 }
 .menu_pic::after {
-  border-right: 1px solid var(--white-transparent);
-  border-left: 1px solid var(--white-transparent);
+  border-right: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
 }
 .menu_pic::before {
-  border-top: 1px solid var(--white-transparent);
-  border-bottom: 1px solid var(--white-transparent);
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
   z-index: 10;
 }
 .menu_pic:hover::after {
-  border-right: 1px solid var(--white-transparent);
-  border-left: 1px solid var(--white-transparent);
+  border-right: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
 }
 .menu_pic:hover::before {
-  border-top: 1px solid var(--white-transparent);
-  border-bottom: 1px solid var(--white-transparent);
+  border-top: 1px solid var(--gold-light);
+  border-bottom: 1px solid var(--gold);
   z-index: 10;
 }
 
@@ -812,13 +812,13 @@ details[open] summary ~ * {
     transform: scale(0, 1);
   }
   .menu_pic:hover::after {
-    border-right: 1px solid var(--white-transparent);
-    border-left: 1px solid var(--white-transparent);
+    border-right: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
     transform: scale(1, 1.2);
   }
   .menu_pic:hover::before {
-    border-top: 1px solid var(--white-transparent);
-    border-bottom: 1px solid var(--white-transparent);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
     z-index: 10;
     transform: scale(1.1, 1);
   }
