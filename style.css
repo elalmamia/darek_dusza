@@ -303,10 +303,13 @@ h4 {
   color: var(--white);
 }
 
-.text5 h1 {
+.text5 h1,
+.text3 h1 {
   color: var(--white);
 }
-
+.text3 p {
+  color: var(--white);
+}
 /* ------------------MENUS------------------ */
 summary {
   list-style-type: none;
@@ -436,19 +439,25 @@ details[open] summary ~ * {
   width: 100%;
   margin-top: 2rem;
 }
-.menu_pics_back {
-  background-color: var(--grey);
+.our_menus_wrapper {
+  /* background-color: var(--grey); */
+  background-color: rgba(0, 0, 0, 0.678);
   position: relative;
 }
-/* .menu_pics_back::before {
+.our_menus_wrapper::before {
   content: '';
+  background-image: url(images/backmenus.jpg);
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.822);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.507);
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-} */
+  z-index: -1;
+}
+
 .menu_pic {
   overflow: hidden;
 }
@@ -456,39 +465,8 @@ details[open] summary ~ * {
 /* ------------------BACKGROUND PIC MENUS----------------- */
 .menu_pics {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.big_num {
-  position: absolute;
-  font-size: 10rem;
-  top: 20%;
-  transform: translateY(-50%);
-  left: 20%;
-  color: var(--white-transparent);
-  opacity: 1;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-}
-.menu_six .big_num {
-  top: 45%;
-}
-
-.tag_desc {
-  position: absolute;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  top: 50%;
-  left: 30%;
-  opacity: 1;
-  align-self: center;
-  line-height: 1;
-  color: var(--white-transparent);
-}
-.menu_pics {
-  display: flex;
   flex-direction: row;
+  justify-content: center;
   text-align: center;
   font-size: 1.2rem;
   padding-bottom: 2rem;
@@ -501,6 +479,34 @@ details[open] summary ~ * {
   font-weight: 600;
   display: block;
 }
+.big_num {
+  position: absolute;
+  font-size: 7rem;
+  top: 20%;
+  transform: translateY(-50%);
+  left: 2rem;
+  color: var(--white-transparent);
+  opacity: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+.menu_six .big_num {
+  top: 3.5rem;
+}
+
+.tag_desc {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  top: 60%;
+  left: 20%;
+  opacity: 1;
+  align-self: center;
+  line-height: 1;
+  color: var(--white);
+}
+
 .menu_pic {
   position: relative;
   display: flex;
@@ -520,7 +526,7 @@ details[open] summary ~ * {
 .menu_pic_bg {
   position: absolute;
   content: '';
-  background-color: var(--gold);
+  background-color: var(--black-transparent);
   left: 0;
   top: 0;
   width: 100%;
@@ -555,27 +561,26 @@ details[open] summary ~ * {
   right: 0.6em;
   transition: transform 250ms ease-in;
 }
+.menu_pic {
+  border: 1px solid var;
+}
 .menu_pic::after {
   border-right: 1px solid var(--white-transparent);
   border-left: 1px solid var(--white-transparent);
-  transform: scale(1, 1.2);
 }
 .menu_pic::before {
   border-top: 1px solid var(--white-transparent);
   border-bottom: 1px solid var(--white-transparent);
   z-index: 10;
-  transform: scale(1.1, 1);
 }
 .menu_pic:hover::after {
   border-right: 1px solid var(--white-transparent);
   border-left: 1px solid var(--white-transparent);
-  transform: scale(1, 1.2);
 }
 .menu_pic:hover::before {
   border-top: 1px solid var(--white-transparent);
   border-bottom: 1px solid var(--white-transparent);
   z-index: 10;
-  transform: scale(1.1, 1);
 }
 
 @keyframes drop {
@@ -767,22 +772,6 @@ details[open] summary ~ * {
   .pic4 {
     max-width: 100%;
   }
-  .menu_pic_bg {
-    background-color: var(--black-transparent);
-  }
-  .big_num {
-    color: var(--white-transparent);
-    left: 20%;
-    top: 40%;
-    transform: translateY(-50%);
-  }
-
-  .tag_desc {
-    font-size: 2rem;
-    top: 50%;
-    left: 50%;
-  }
-
   .text1 {
     text-align: center;
     /* grid-row: 1;
@@ -793,10 +782,21 @@ details[open] summary ~ * {
     padding-right: 10rem;
   }
   .menu_pics {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
     padding-bottom: 4rem;
+  }
+  .big_num {
+    left: 20%;
+    top: 40%;
+    transform: translateY(-50%);
+  }
+  .menu_six .big_num {
+    top: 58%;
+  }
+  .tag_desc {
+    font-size: 2rem;
+    top: 50%;
+    left: 50%;
+    color: var(--white-transparent);
   }
 
   .menu_pic {
