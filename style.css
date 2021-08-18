@@ -454,7 +454,7 @@ label.checked{
   margin-top: 2rem;
   text-align: center;
   border: 1px solid var(--gold);
-  padding: 2rem 8rem;
+  padding: 2rem;
   /* display: flex;
   flex-direction: column; */
 }
@@ -469,6 +469,7 @@ label.checked{
   font-size: .8rem;
   margin-top: 1rem;
   font-weight: 400;
+ 
 }
 .order-list li{
   margin:.5rem 0;
