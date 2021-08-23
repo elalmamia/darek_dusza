@@ -28,9 +28,13 @@ const burgerOpen = document.querySelector('.burger-icon'),
   checkForPrice = document.querySelector('.check-for-price'),
   mailBtn = document.querySelector('.mail-btn'),
   price = document.querySelector('.price'),
-  guestNum = document.querySelector('#number');
+  guestNum = document.querySelector('#number'),
+  text = document.querySelectorAll('.text');
 
 // sliderBtnLeft.addEventListener('click', slidesToLeft);
+text.forEach(function (item) {
+  item.classList.add('show-on-scroll');
+});
 
 const sectionOneOptions = {
   rootMargin: '-600px 0px 0px 0px',
@@ -38,6 +42,8 @@ const sectionOneOptions = {
 const sectionTwoOptions = {
   rootMargin: '-100px 0px 0px 0px',
 };
+
+// -----STICKU NAV-----
 
 const sectionOneObserver = new IntersectionObserver(function (
   entries,
@@ -59,6 +65,22 @@ const sectionOneObserver = new IntersectionObserver(function (
 sectionOneOptions);
 
 sectionOneObserver.observe(header);
+
+// -----------SHOW ON SCROLL--------
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    } else {
+      entry.target.classList.remove('is-visible');
+    }
+  });
+});
+
+const targets = document.querySelectorAll('.show-on-scroll');
+targets.forEach(function (target) {
+  observer.observe(target);
+});
 
 // ----------------EVENT LISTENERS-----------------
 if (burger) {
