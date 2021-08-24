@@ -460,7 +460,22 @@
               </p>
             </div>
           </details>
-          <div class="order-list-wrapper">
+          <form
+            action="https://formsubmit.co/helena.dusza@gmail.com"
+            method="POST"
+            onsubmit="return validateForm()"
+            class="order-list-wrapper"
+          >
+            <textarea
+              name="Menu"
+              id="order-list"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <!-- -----captcha somethink doesnt work----- -->
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="box" />
+
             <span>Your Menu:</span>
             <ul class="order-list"></ul>
 
@@ -468,8 +483,11 @@
               <label for="guest-num">Number Of Guests</label>
               <input type="number" name="guest-num" id="number" />
             </div>
-            <button class="mail-btn">Create PDF</button>
-          </div>
+            <button type="submit" class="mail-btn">Send</button>
+            <div class="message"></div>
+          </form>
+
+          <button class="pdf-btn">Save As PDF</button>
         </div>
         <div class="contact_wrapper_menus">
           <div class="text text5">

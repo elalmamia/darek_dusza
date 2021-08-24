@@ -282,8 +282,9 @@ h2 {
 }
 h4 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   letter-spacing: initial;
+  margin-top: 1rem;
 }
 /* span {
   font-weight: 700;
@@ -335,6 +336,34 @@ h4 {
   color: var(--white);
 }
 /* ------------------MENUS------------------ */
+.message{
+  display: none;
+}
+.message.show{
+  display: block;
+  font-size: .8rem;
+  color: white;
+  background-color: var(--gold-light);
+  padding: .5rem;
+  margin-top: .5rem;
+  border-radius: .3rem;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 500ms; /* Firefox < 16 */
+   -ms-animation: fadein 500ms; /* Internet Explorer */
+    -o-animation: fadein 500ms; /* Opera < 12.1 */
+       animation: fadein 500ms;
+ 
+}
+.message.show.thank{
+  background-color: transparent;
+  color: var(--gold);
+}
+
+
+
+textarea{
+  display: none;
+}
 summary {
   list-style-type: none;
   cursor: pointer;
@@ -486,20 +515,28 @@ label.checked{
   margin-top: 2rem;
   text-align: center;
   border: 1px solid var(--gold);
-  padding: 2rem;
+  padding: 5rem;
   /* display: flex;
   flex-direction: column; */
 }
 .order-list-wrapper span{
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--gold);
+  font-size: 1.3rem;
+  font-weight: 400;
+  position:relative;
+}
+.order-list-wrapper span::after{
+  content:'';
+position: absolute;
+background-color: var(--gold);
+height: 1px;
+width: 50%;
+bottom:-1rem;
+left: 50%;
+transform: translateX(-50%);
 }
 .order-list{
   font-size: .8rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-weight: 400;
  
 }
@@ -513,7 +550,8 @@ label.checked{
 .order-list p{
   font-size: .6rem;
 }
-.mail-btn{
+.mail-btn,
+.pdf-btn{
   margin:auto;
   margin-top: 1rem;
   padding: .5rem 1.5rem;
@@ -529,7 +567,8 @@ label.checked{
   -moz-transition:background-color 250ms ease;
   transition: background-color 250ms ease;
 }
-.mail-btn:hover{
+.mail-btn:hover,
+.pdf-btn:hover{
   background-color: var(--gold-light);
   color:var(--white);
   cursor: pointer;
@@ -817,6 +856,34 @@ input::-webkit-outer-spin-button{
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+@keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
 @keyframes drop {
   0% {
     opacity: 0;
@@ -994,6 +1061,7 @@ input::-webkit-outer-spin-button{
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
+
   }
 
   .list-desktop-right,
