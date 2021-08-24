@@ -335,7 +335,30 @@ h4 {
 .text3 p {
   color: var(--white);
 }
+
 /* ------------------MENUS------------------ */
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-align: left;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-align: left;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-align: left;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: var(--gold);
+  font-size: 0.8rem;
+  text-align: left;
+}
+
 .message{
   display: none;
 }
@@ -354,14 +377,37 @@ h4 {
        animation: fadein 500ms;
  
 }
-.message.show.thank{
-  background-color: transparent;
-  color: var(--gold);
+.pre-send-form{
+  display: none;
+}
+.pre-send-form.show{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  background-color: var(--white); 
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  z-index: 999;
+}
+
+
+.pre-send-form input{
+  height: 2rem;
+  width: 100%;
+  margin:1rem 0;
+}
+#guest-num{
+  width: 2rem;
+}
+#mail-form-message{
+resize: none;
 }
 
 
 
-textarea{
+#mail-order-list{
   display: none;
 }
 summary {
@@ -550,8 +596,8 @@ transform: translateX(-50%);
 .order-list p{
   font-size: .6rem;
 }
-.mail-btn,
-.pdf-btn{
+
+.btn-menus{
   margin:auto;
   margin-top: 1rem;
   padding: .5rem 1.5rem;
@@ -567,28 +613,25 @@ transform: translateX(-50%);
   -moz-transition:background-color 250ms ease;
   transition: background-color 250ms ease;
 }
-.mail-btn:hover,
-.pdf-btn:hover{
+.btn-menus:hover{
   background-color: var(--gold-light);
   color:var(--white);
   cursor: pointer;
 }
+
 .check-for-price label{
   color: var(--gold);
 }
-.check-for-price input{
-  width: 2rem;
-  height: 2rem;
+.mail-form-input{
+  
   font-size: 1rem;
   text-align: center;
   border: none;
   border-bottom:1px solid var(--gold-light);
- 
-  
   color: var(--gold);
 
 }
-.check-for-price input:focus{
+.mail-form-input:focus{
   border:1px solid var(--gold-light);
   color: var(--gold-light);
   outline: none;

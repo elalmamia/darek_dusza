@@ -25,11 +25,10 @@ const burgerOpen = document.querySelector('.burger-icon'),
   checkBoxDessert = document.querySelectorAll('.check-dessert'),
   courses = document.querySelectorAll('details'),
   splide = document.querySelector('.splide'),
-  orderList = document.querySelector('.order-list'),
+  orderList = document.querySelector('#order-list'),
   checkForPrice = document.querySelector('.check-for-price'),
-  pdfBtn = document.querySelector('.pdf-btn'),
   price = document.querySelector('.price'),
-  guestNum = document.querySelector('#number'),
+  guestNum = document.querySelector('#guest-num'),
   text = document.querySelectorAll('.text'),
   formOrderList = document.querySelector('.order-list-wrapper');
 
@@ -92,8 +91,9 @@ menuBtn.forEach(item => item.addEventListener('click', toggleMenu));
 menusLink.forEach(item => item.addEventListener('click', goToMenus));
 aboutLink.forEach(item => item.addEventListener('click', goToAbout));
 contactLink.forEach(item => item.addEventListener('click', goToContact));
-contactLinkMenus.addEventListener('click', goToContactMenus);
-
+if (contactLinkMenus) {
+  contactLinkMenus.addEventListener('click', goToContactMenus);
+}
 // ----------------FUNCTIONS-----------------
 
 function toggleMobileMenu() {
@@ -124,6 +124,11 @@ function toggleMenu(e) {
 }
 
 // -----------CREATE YOUR MENU-----------
+const pdfBtn = document.querySelector('#pdf-btn'),
+  preSendBtn = document.querySelector('#pre-mail-btn'),
+  message1 = document.querySelector('#message1'),
+  preSendForm = document.querySelector('.pre-send-form');
+
 if (formOrderList) {
   formOrderList.addEventListener('submit', function (e) {
     e.preventDefault;
@@ -140,6 +145,9 @@ if (guestNum) {
 }
 if (pdfBtn) {
   pdfBtn.addEventListener('click', generatePdf);
+}
+if (preSendBtn) {
+  preSendBtn.addEventListener('click', validateForm);
 }
 
 const selectPrior = function (name) {
@@ -167,6 +175,7 @@ function handleCheck(e) {
 function makeList(text, name, desc) {
   const li = document.createElement('li');
   li.classList.add(name);
+  li.classList.add('order-list-item');
 
   if (!document.querySelector(`li.${name}`)) {
     orderList.appendChild(
@@ -180,6 +189,20 @@ function makeList(text, name, desc) {
   }
   orderList.appendChild(li);
 }
+// function showList() {
+//   const orderListCopy = document.querySelector('#order-list-copy');
+//   const li = document.createElement('li');
+//   li.innerHTML = 'Your Menu:';
+//   orderListCopy.appendChild(li);
+//   const orderListItems = document.querySelectorAll('.order-list-item');
+//   orderListItems.forEach(item => {
+//     const meal = document.createElement('li');
+//     meal.appendChild(item.firstElementChild);
+//     orderListCopy.appendChild(meal);
+//   });
+//   // const x = orderList.innerHTML;
+//   // orderListCopy.innerHTML = x;
+// }
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -192,46 +215,89 @@ function seePrice(e) {
   if (document.querySelector('.total-price')) {
     document.querySelector('.total-price').remove();
   }
-  if (parseInt(document.querySelector('#number').value) > 0) {
+  if (parseInt(document.querySelector('#guest-num').value) > 0) {
     total.innerHTML = `Tot: ${totPrice} €`;
   } else {
-    message.innerHTML = 'Please enter the number from 4 to 12';
-    message.classList.add('show');
+    message1.innerHTML = 'Please enter the number from 4 to 12';
+    message1.classList.add('show');
     setTimeout(removeClass, 3000);
   }
 
   checkForPrice.appendChild(total);
 }
 
-// --------------BEFORE SUBMIT THE MENU--------------
-const textarea = document.querySelector('#order-list');
-const message = document.querySelector('.message');
+// --------------BEFORE SUBMIT THE MENU put the created menu into the text area input to mail it --------------
+const textarea = document.querySelector('#mail-order-list');
+
 function createListToMail() {
   textarea.value = orderList.innerText;
 }
 
 function validateForm() {
   const checked = document.querySelectorAll('.checked');
+  const background = document.querySelector('.container'),
+    backgroundStyle = document.createElement('style');
+  backgroundStyle.innerHTML = `
+  .container::after{
+    display: block;
+    position: fixed;
+    content: '';
+    background-color: var(--black-transparent);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }`;
+
   if (
     checked.length === courses.length &&
-    parseInt(document.querySelector('#number').value) > 0
+    parseInt(document.querySelector('#guest-num').value) > 0
   ) {
     createListToMail();
+    // showList();
+    preSendForm.classList.add('show');
+    document.head.appendChild(backgroundStyle);
+
+    window.addEventListener('mouseup', function (event) {
+      if (event.target === background) {
+        backgroundStyle.innerHTML = '';
+        preSendForm.classList.remove('show');
+      }
+    });
     return true;
   } else if (checked.length !== courses.length) {
-    message.innerHTML = 'Please check one meal from all the courses';
-    message.classList.add('show');
+    message1.innerHTML = 'Please check one meal from all the courses';
+    message1.classList.add('show');
     setTimeout(removeClass, 3000);
     return false;
-  } else if (isNaN(parseInt(document.querySelector('#number').value))) {
-    message.innerHTML = 'Please type the number of guests';
-    message.classList.add('show');
+  } else if (isNaN(parseInt(document.querySelector('#guest-num').value))) {
+    message1.innerHTML = 'Please type the number of guests';
+    message1.classList.add('show');
     setTimeout(removeClass, 3000);
     return false;
   } else return false;
 }
 function removeClass() {
-  message.classList.remove('show');
+  message1.classList.remove('show');
+  message2.classList.remove('show');
+}
+
+function finalValidate() {
+  const email = document.querySelector('#email').value,
+    message2 = document.querySelector('#message2');
+  if (validateEmail(email)) {
+    return true;
+  } else {
+    message2.innerHTML = 'Please enter a valid email';
+    message2.classList.add('show');
+    setTimeout(removeClass, 3000);
+    return false;
+  }
+}
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
 // ----------PDF GENERATOR------------
 
