@@ -339,22 +339,22 @@ h4 {
 /* ------------------MENUS------------------ */
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: var(--gold);
+  color: rgba(0, 0, 0, 0.473);
   font-size: 0.8rem;
   text-align: left;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: var(--gold);
+  color: rgba(0, 0, 0, 0.473);
   font-size: 0.8rem;
   text-align: left;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: var(--gold);
+  color: rgba(0, 0, 0, 0.473);
   font-size: 0.8rem;
   text-align: left;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: var(--gold);
+  color: rgba(0, 0, 0, 0.473);
   font-size: 0.8rem;
   text-align: left;
 }
@@ -390,13 +390,27 @@ h4 {
   left:50%;
   transform:translate(-50%, -50%);
   z-index: 999;
+  max-height: 100vh;
+  
 }
-
-
+.pre-send-form-logo{
+  height: 100px;
+  margin-bottom: 2rem;
+}
+.pre-send-form-icon-close{
+  position: absolute;
+  right:40px;
+  top: 40px;
+}
+.pre-send-form-icon-close:hover{
+  cursor: pointer;
+}
 .pre-send-form input{
   height: 2rem;
   width: 100%;
   margin:1rem 0;
+  color: black;
+  
 }
 #guest-num{
   width: 2rem;
@@ -639,13 +653,13 @@ transform: translateX(-50%);
   font-size: 1rem;
   text-align: center;
   border: none;
-  border-bottom:1px solid var(--gold-light);
+  border-bottom:1px solid var(--gold);
   color: var(--gold);
 
 }
 .mail-form-input:focus{
-  border:1px solid var(--gold-light);
-  color: var(--gold-light);
+  border:1px solid var(--gold-faded);
+  color: var(--black);
   outline: none;
 }
 input::-webkit-inner-spin-button,

@@ -258,8 +258,9 @@ function validateForm() {
     preSendForm.classList.add('show');
     document.head.appendChild(backgroundStyle);
 
-    window.addEventListener('mouseup', function (event) {
-      if (event.target === background) {
+    window.addEventListener('mouseup', function (e) {
+      const closeIcon = document.querySelector('.pre-send-form-icon-close');
+      if (e.target === background || e.target === closeIcon) {
         backgroundStyle.innerHTML = '';
         preSendForm.classList.remove('show');
       }
