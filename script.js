@@ -216,7 +216,7 @@ function seePrice(e) {
     document.querySelector('.total-price').remove();
   }
   if (parseInt(document.querySelector('#guest-num').value) > 0) {
-    total.innerHTML = `Tot: ${totPrice} €`;
+    total.innerHTML = `Total: ${totPrice} €* <p class='details' style='font-size: 1rem'>*Price payed after the dinner</p>`;
   } else {
     message1.innerHTML = 'Please enter the number from 4 to 12';
     message1.classList.add('show');
@@ -302,7 +302,6 @@ function validateEmail(email) {
 // ----------PDF GENERATOR------------
 
 function generatePdf() {
-  formOrderList.classList.add('print');
   var opt = {
     filename: 'SoulfulGourmet_menu.pdf',
     margin: [0, 5, 0, 5],
@@ -311,7 +310,6 @@ function generatePdf() {
   };
 
   html2pdf().set(opt).from(formOrderList).save();
-  formOrderList.classList.remove('print');
 }
 
 // --------------SLIDER----------------

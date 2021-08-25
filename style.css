@@ -477,6 +477,7 @@ details[open] summary ~ * {
 }
 .menu-description {
   margin-top: 1rem;
+  margin-bottom: 2rem;
   /* display: grid;
   grid-template-columns: 3fr 1fr 3fr; */
   /* justify-content: center;
@@ -488,9 +489,12 @@ details[open] summary ~ * {
 }
 .menu-description p{
   margin:0;
+  margin-bottom: 0.5rem;
   padding:0;
   font-size: 0.8rem;
-  
+}
+.description{
+  font-size: 1rem;
 }
 .price-wrapper{
   padding-bottom: 1rem;
@@ -549,11 +553,18 @@ label{
   color: var(--black);
   font-weight: 400;
   cursor: pointer;
+  transition: color 150ms ease;
+}
+label:hover{
+  color: var(--gold);
 }
 label.checked{
   font-weight: 600;
   color: var(--gold);
-  text-decoration: underline;
+  font-size: 0.96rem;
+  /* text-decoration: underline; */
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.178), 
+  0px -4px 10px rgba(255, 255, 255, 0.185);
 }
 .order-list-wrapper{
   max-width: 40rem;
@@ -569,9 +580,10 @@ label.checked{
   font-size: 1.3rem;
   font-weight: 400;
   position:relative;
+  
 }
 .order-list-wrapper span::after{
-  content:'';
+content:'';
 position: absolute;
 background-color: var(--gold);
 height: 1px;
@@ -651,10 +663,7 @@ input::-webkit-outer-spin-button{
   font-weight: 600;
   color: var(--gold);
 }
-.order-list-wrapper.print{
-  background-color: var(--white);
 
-}
 /* 
 @media print{
   .order-list-wrapper{
@@ -1045,6 +1054,8 @@ input::-webkit-outer-spin-button{
   }
   .submenu {
     padding-top: 12rem;
+    max-width: 900px;
+    margin: auto;
   }
 
   .text h1::after {
