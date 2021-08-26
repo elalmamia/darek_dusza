@@ -654,19 +654,12 @@ transform: translateX(-50%);
 .order-list p{
   font-size: .6rem;
 }
-#order-list-copy{
-  text-align: center;
-  padding: 4rem 6rem;
-}
+
 #order-list-copy h2{
   margin-bottom: 2rem;
 }
-#order-list-copy h3{
-  font-weight: 600;
-}
-#order-list-copy p{
-  font-size: .8rem;
-}
+
+
 .btn-menus{
   margin:auto;
   margin-top: 1rem;

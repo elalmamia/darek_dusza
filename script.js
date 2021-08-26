@@ -145,7 +145,7 @@ if (guestNum) {
   guestNum.addEventListener('keyup', seePrice);
 }
 if (pdfBtn) {
-  pdfBtn.addEventListener('click', generatePdf);
+  pdfBtn.addEventListener('click', scrollToMenu);
 }
 if (preSendBtn) {
   preSendBtn.addEventListener('click', validateForm);
@@ -312,19 +312,22 @@ function goBack() {
 // ----------PDF GENERATOR------------
 let orderListCopy = document.querySelector('#order-list-copy');
 
-function generatePdf() {
-  var opt = {
-    filename: 'SoulfulGourmet_menu.pdf',
-    margin: [0, 5, 0, 5],
-    html2canvas: { scale: 5 },
-    jsPDF: { unit: 'mm', format: 'A4', orientation: 'portrait' },
-  };
+// function generatePdf() {
+// var opt = {
+//   filename: 'SoulfulGourmet_menu.pdf',
+//   margin: [0, 5, 0, 5],
+//   html2canvas: { scale: 5 },
+//   jsPDF: { unit: 'mm', format: 'A4', orientation: 'portrait' },
+// };
 
+// html2pdf().set(opt).from(orderListCopy).save();
+
+// }
+function scrollToMenu() {
   orderListCopy.innerHTML = `<img src="images/logoblack.svg" alt="logo" class="thanks-logo" /><h2>Your Menu:</h2>${JSON.parse(
     localStorage.getItem('menu')
   )}`;
-
-  html2pdf().set(opt).from(orderListCopy).save();
+  orderListCopy.scrollIntoView({ behavior: 'smooth', block: 'start' });
   localStorage.clear();
 }
 
