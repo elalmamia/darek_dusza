@@ -329,6 +329,7 @@ function scrollToMenu() {
   )}`;
   orderListCopy.scrollIntoView({ behavior: 'smooth', block: 'start' });
   localStorage.clear();
+  pdfBtn.disabled = true;
 }
 
 // --------------SLIDER----------------
