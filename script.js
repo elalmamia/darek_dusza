@@ -308,10 +308,7 @@ if (undoBtn) {
 function goBack() {
   window.history.back();
 }
-window.onunload = () => {
-  // Clear the local storage
-  localStorage.clear();
-};
+
 // ----------PDF GENERATOR------------
 let orderListCopy = document.querySelector('#order-list-copy');
 
