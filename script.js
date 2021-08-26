@@ -64,8 +64,9 @@ const sectionOneObserver = new IntersectionObserver(function (
   });
 },
 sectionOneOptions);
-
-sectionOneObserver.observe(header);
+if (header) {
+  sectionOneObserver.observe(header);
+}
 
 // -----------SHOW ON SCROLL--------
 const observer = new IntersectionObserver(function (entries) {
@@ -189,20 +190,18 @@ function makeList(text, name, desc) {
   }
   orderList.appendChild(li);
 }
-// function showList() {
-//   const orderListCopy = document.querySelector('#order-list-copy');
-//   const li = document.createElement('li');
-//   li.innerHTML = 'Your Menu:';
-//   orderListCopy.appendChild(li);
-//   const orderListItems = document.querySelectorAll('.order-list-item');
-//   orderListItems.forEach(item => {
-//     const meal = document.createElement('li');
-//     meal.appendChild(item.firstElementChild);
-//     orderListCopy.appendChild(meal);
-//   });
-//   // const x = orderList.innerHTML;
-//   // orderListCopy.innerHTML = x;
+
+// function addToLocalStorage(item) {
+//   let menu;
+//   if (localStorage.getItem('menu') === null) {
+//     menu = [];
+//   } else {
+//     menu = JSON.parse(localStorage.getItem('menu'));
+//   }
+//   menu.push(item);
+
 // }
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -254,7 +253,6 @@ function validateForm() {
     parseInt(document.querySelector('#guest-num').value) > 0
   ) {
     createListToMail();
-    // showList();
     preSendForm.classList.add('show');
     document.head.appendChild(backgroundStyle);
 
@@ -265,6 +263,7 @@ function validateForm() {
         preSendForm.classList.remove('show');
       }
     });
+    localStorage.setItem('menu', JSON.stringify(orderList.innerHTML));
     return true;
   } else if (checked.length !== courses.length) {
     message1.innerHTML = 'Please check one meal from all the courses';
@@ -300,7 +299,21 @@ function validateEmail(email) {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
+
+// ------------THANK YOU PAGE-------------
+const undoBtn = document.querySelector('.icon-undo');
+if (undoBtn) {
+  undoBtn.addEventListener('click', goBack);
+}
+function goBack() {
+  window.history.back();
+}
+window.onunload = () => {
+  // Clear the local storage
+  localStorage.clear();
+};
 // ----------PDF GENERATOR------------
+let orderListCopy = document.querySelector('#order-list-copy');
 
 function generatePdf() {
   var opt = {
@@ -310,7 +323,12 @@ function generatePdf() {
     jsPDF: { unit: 'mm', format: 'A4', orientation: 'portrait' },
   };
 
-  html2pdf().set(opt).from(formOrderList).save();
+  orderListCopy.innerHTML = `<img src="images/logoblack.svg" alt="logo" class="thanks-logo" /><h2>Your Menu:</h2>${JSON.parse(
+    localStorage.getItem('menu')
+  )}`;
+
+  html2pdf().set(opt).from(orderListCopy).save();
+  localStorage.clear();
 }
 
 // --------------SLIDER----------------

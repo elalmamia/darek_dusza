@@ -470,12 +470,16 @@
               <!-- -----captcha somethink doesnt work----- -->
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="box" />
+              <input
+                type="hidden"
+                name="_next"
+                value="http://127.0.0.1:5500/thanks.html"
+              />
 
               <span>Your Menu:</span>
               <ul id="order-list" class="order-list"></ul>
 
               <div class="pre-send-form">
-                <!-- <ul class="order-list" id="order-list-copy"></ul> -->
                 <img
                   src="images/logoblack.svg"
                   class="pre-send-form-logo"
@@ -492,8 +496,6 @@
                   class="mail-form-input"
                   placeholder="Your Name"
                 />
-                <!-- <label for="name">Your name</label> -->
-
                 <input
                   type="email"
                   class="mail-form-input"
@@ -501,15 +503,21 @@
                   id="email"
                   placeholder="Your Email Adress"
                 />
-                <!-- <label for="email">Your email</label> -->
-
                 <input
                   type="number"
                   class="mail-form-input"
                   name="phone"
                   placeholder="Your Phone Number"
                 />
-                <!-- <label for="phone">Your phone number</label> -->
+                <input
+                  type="text"
+                  class="mail-form-input"
+                  name="date"
+                  id="date"
+                  placeholder="Select the date of you dinner"
+                  onfocus="this.type='date';this.focus();"
+                  onblur="if(this.value == '') this.type='text';"
+                />
                 <textarea
                   name="message"
                   id="mail-form-message"
@@ -539,8 +547,6 @@
 
               <div class="message" id="message1"></div>
             </form>
-
-            <button class="btn-menus" id="pdf-btn">Save Menu</button>
           </div>
           <div class="contact_wrapper_menus">
             <div class="text text5">
@@ -556,9 +562,17 @@
       <footer>
         <div class="footer-wrapper">
           <div class="socials">
-            <i class="icon-mail"></i>
-            <i class="icon-instagram"></i>
-            <i class="icon-facebook"></i>
+            <a
+              href="mailto:helena.dusza@gmail.com?subject=Soulfull Gourmet"
+              class="icon-link-footer"
+              ><i class="icon-mail"></i
+            ></a>
+            <a href="#/" class="icon-link-footer"
+              ><i class="icon-instagram"></i
+            ></a>
+            <a href="#/" class="icon-link-footer"
+              ><i class="icon-facebook"></i
+            ></a>
           </div>
           <div class="copyrights">
             Darek Dusza &copy 2021 All rights reserved
