@@ -500,7 +500,7 @@ details[open] summary ~ * {
 }
 
 .submenu {
-  padding: 2rem;
+  padding: 1rem;
   padding-top: 3rem;
   padding-bottom: 5rem;
 }
@@ -618,7 +618,7 @@ label.checked{
   margin-top: 2rem;
   text-align: center;
   border: 1px solid var(--gold);
-  padding: 5rem;
+  padding: 5rem 1rem;
   /* display: flex;
   flex-direction: column; */
 }
@@ -786,7 +786,11 @@ p.thanks{
 .thanks-icon:hover{
   background-color: var(--gold-light);
 }
-
+.thanks-icon .home-icon{
+  margin:0;
+  padding:0;
+  height: 1rem;
+}
 /* 
 @media print{
   .order-list-wrapper{
@@ -1161,6 +1165,10 @@ p.thanks{
     padding-left: 3rem;
     padding-right: 3rem;
   }
+  .order-list-wrapper{
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
 }
 @media(min-width: 1000px) {
 
@@ -1179,6 +1187,8 @@ p.thanks{
   }
   .submenu {
     padding-top: 12rem;
+    padding-left:2rem;
+    padding-right: 2rem;
     max-width: 900px;
     margin: auto;
   }

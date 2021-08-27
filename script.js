@@ -30,7 +30,8 @@ const burgerOpen = document.querySelector('.burger-icon'),
   price = document.querySelector('.price'),
   guestNum = document.querySelector('#guest-num'),
   text = document.querySelectorAll('.text'),
-  formOrderList = document.querySelector('.order-list-wrapper');
+  formOrderList = document.querySelector('.order-list-wrapper'),
+  email = document.querySelector('#email');
 
 // sliderBtnLeft.addEventListener('click', slidesToLeft);
 text.forEach(function (item) {
@@ -286,6 +287,7 @@ function finalValidate() {
   const email = document.querySelector('#email').value,
     message2 = document.querySelector('#message2');
   if (validateEmail(email)) {
+    addCc(email);
     return true;
   } else {
     message2.innerHTML = 'Please enter a valid email';
@@ -299,7 +301,13 @@ function validateEmail(email) {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
-
+function addCc(email) {
+  const ccInput = document.createElement('input');
+  ccInput.setAttribute('type', 'hidden');
+  ccInput.setAttribute('name', '_cc');
+  ccInput.setAttribute('value', email);
+  formOrderList.appendChild(ccInput);
+}
 // ------------THANK YOU PAGE-------------
 const undoBtn = document.querySelector('.icon-undo');
 if (undoBtn) {
@@ -328,8 +336,9 @@ function scrollToMenu() {
     localStorage.getItem('menu')
   )}`;
   orderListCopy.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  localStorage.clear();
+  // localStorage.clear();
   pdfBtn.disabled = true;
+  pdfBtn.style = ``;
 }
 
 // --------------SLIDER----------------
