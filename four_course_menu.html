@@ -59,12 +59,21 @@
               <div class="price-wrapper">
                 <span class="price">37</span>€/person
               </div>
-              <p>Create your own perfect combination.</p>
-              <p>Choose one plate per course.</p>
-              <p>Your menu will appear at the bottom of the page.</p>
+              <p>Create your own perfect combination!</p>
               <p>
-                After composing your menu send it to us, and we will contact You
-                to discuss every meal and make sure that every bite is perfect!
+                Choose one plate per course from the signature dishes below.
+              </p>
+              <p>
+                Your personalized menu will appear at the bottom of the page.
+              </p>
+              <p>
+                Indicate number of guests, date and adress where you would like
+                to hold your dinner party
+              </p>
+              <p>
+                Send the request to us and we will contact you within 24 hours
+                to discuss any remaining details, so you can sit back and relax
+                while we take care of everything!
               </p>
             </div>
 
@@ -462,18 +471,16 @@
               <textarea
                 name="Menu"
                 id="mail-order-list"
+                class="hidden-input"
                 cols="30"
                 rows="10"
               ></textarea>
-              <!-- -----captcha somethink doesnt work----- -->
-              <!-- <input type="hidden" name="_captcha" value="false" /> -->
               <input type="hidden" name="_template" value="box" />
               <input
                 type="hidden"
                 name="_next"
                 value="https://elalmamia.github.io/darek_dusza/thanks.html"
               />
-
               <span>Your Menu:</span>
               <ul id="order-list" class="order-list"></ul>
 
@@ -507,21 +514,41 @@
                   name="phone"
                   placeholder="Your Phone Number"
                 />
+
                 <input
                   type="text"
                   class="mail-form-input"
                   name="date"
                   id="date"
                   placeholder="Select the date of you dinner"
-                  onfocus="this.type='date';this.focus();"
-                  onblur="if(this.value == '') this.type='text';"
+                  onfocus="(this.type='date')"
                 />
+                <div class="check-for-price">
+                  <label for="guest-num">Number Of Guests</label>
+                  <input
+                    type="number"
+                    name="guest-num"
+                    id="guest-num"
+                    class="mail-form-input"
+                  />
+                </div>
+                <textarea
+                  name="Total price"
+                  id="total-price"
+                  class="hidden-input"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+
+                <!--  placeholder="Select the date of you dinner"
+                onfocus="this.type='date';this.focus(); " onblur="
+                this.type='text';" -->
                 <textarea
                   name="message"
                   id="mail-form-message"
                   cols="30"
                   rows="10"
-                  placeholder="Your message..."
+                  placeholder="Your adress and additional information you would like to add..."
                   class="mail-form-input"
                 ></textarea>
                 <div class="message" id="message2"></div>
@@ -530,15 +557,6 @@
                 </button>
               </div>
 
-              <div class="check-for-price">
-                <label for="guest-num">Number Of Guests</label>
-                <input
-                  type="number"
-                  name="guest-num"
-                  id="guest-num"
-                  class="mail-form-input"
-                />
-              </div>
               <button type="button" class="btn-menus" id="pre-mail-btn">
                 Send Request
               </button>

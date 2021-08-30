@@ -31,8 +31,8 @@ const burgerOpen = document.querySelector('.burger-icon'),
   guestNum = document.querySelector('#guest-num'),
   text = document.querySelectorAll('.text'),
   formOrderList = document.querySelector('.order-list-wrapper'),
-  email = document.querySelector('#email');
-
+  email = document.querySelector('#email'),
+  totalPrice = document.querySelector('#total-price');
 // sliderBtnLeft.addEventListener('click', slidesToLeft);
 text.forEach(function (item) {
   item.classList.add('show-on-scroll');
@@ -142,9 +142,9 @@ checkBoxEntradas.forEach(item => item.addEventListener('change', handleCheck));
 checkBoxPrincipal.forEach(item => item.addEventListener('change', handleCheck));
 checkBoxDessert.forEach(item => item.addEventListener('change', handleCheck));
 
-if (guestNum) {
-  guestNum.addEventListener('keyup', seePrice);
-}
+// if (guestNum) {
+//   guestNum.addEventListener('keyup', seePrice);
+// }
 if (pdfBtn) {
   pdfBtn.addEventListener('click', scrollToMenu);
 }
@@ -206,29 +206,28 @@ function makeList(text, name, desc) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-function seePrice(e) {
-  e.preventDefault();
-  let totPrice = parseInt(price.innerHTML) * parseInt(guestNum.value);
+// const total = document.createElement('div');
+// function seePrice(e) {
+//   e.preventDefault();
+//   let totPrice = parseInt(price.innerHTML) * parseInt(guestNum.value);
 
-  const total = document.createElement('div');
-  total.classList.add('total-price');
-  if (document.querySelector('.total-price')) {
-    document.querySelector('.total-price').remove();
-  }
-  if (parseInt(document.querySelector('#guest-num').value) > 0) {
-    total.innerHTML = `Total: ${totPrice} €* <p class='details' style='font-size: 1rem'>*Price payed after the dinner</p>`;
-  } else {
-    message1.innerHTML = 'Please enter the number from 4 to 12';
-    message1.classList.add('show');
-    setTimeout(removeClass, 3000);
-  }
+//   total.classList.add('total-price');
+//   if (document.querySelector('.total-price')) {
+//     document.querySelector('.total-price').remove();
+//   }
+//   if (parseInt(guestNum.value) > 0) {
+//     total.innerHTML = `Total: ${totPrice} €* <p class='details' style='font-size: 1rem'>*Price payed after the dinner</p>`;
+//   } else {
+//     message1.innerHTML = 'Please enter the number from 4 to 12';
+//     message1.classList.add('show');
+//     setTimeout(removeClass, 3000);
+//   }
 
-  checkForPrice.appendChild(total);
-}
+//   // checkForPrice.appendChild(total);
+// }
 
 // --------------BEFORE SUBMIT THE MENU put the created menu into the text area input to mail it --------------
 const textarea = document.querySelector('#mail-order-list');
-
 function createListToMail() {
   textarea.value = orderList.innerText;
 }
@@ -249,10 +248,7 @@ function validateForm() {
     right: 0;
   }`;
 
-  if (
-    checked.length === courses.length &&
-    parseInt(document.querySelector('#guest-num').value) > 0
-  ) {
+  if (checked.length === courses.length) {
     createListToMail();
     preSendForm.classList.add('show');
     document.head.appendChild(backgroundStyle);
@@ -271,13 +267,9 @@ function validateForm() {
     message1.classList.add('show');
     setTimeout(removeClass, 3000);
     return false;
-  } else if (isNaN(parseInt(document.querySelector('#guest-num').value))) {
-    message1.innerHTML = 'Please type the number of guests';
-    message1.classList.add('show');
-    setTimeout(removeClass, 3000);
-    return false;
   } else return false;
 }
+
 function removeClass() {
   message1.classList.remove('show');
   message2.classList.remove('show');
@@ -286,9 +278,16 @@ function removeClass() {
 function finalValidate() {
   const email = document.querySelector('#email').value,
     message2 = document.querySelector('#message2');
-  if (validateEmail(email)) {
+  if (validateEmail(email) && parseInt(guestNum.value) > 0) {
     addCc(email);
+    totalPrice.value = parseInt(price.innerHTML) * parseInt(guestNum.value);
+
     return true;
+  } else if (isNaN(parseInt(guestNum.value))) {
+    message2.innerHTML = 'Please type the number of guests';
+    message2.classList.add('show');
+    setTimeout(removeClass, 3000);
+    return false;
   } else {
     message2.innerHTML = 'Please enter a valid email';
     message2.classList.add('show');
